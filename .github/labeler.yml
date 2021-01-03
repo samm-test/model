@@ -3,4 +3,4 @@ label1:
   - data/**/*
 
 # Add 'label2' to any file changes within 'example2' folder
-label2: *
+label2: ***
