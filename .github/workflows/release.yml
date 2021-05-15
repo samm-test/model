@@ -25,8 +25,8 @@ jobs:
       - run: tar -cvzf samm${RELEASE_VERSION}.tar.gz images model texts
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: samm${RELEASE_VERSION}.tar.gz
-          tag: ${RELEASE_VERSION}
+          artifacts: samm$RELEASE_VERSION.tar.gz
+          tag: $RELEASE_VERSION
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge main into develop branch
         uses: thomaseizinger/create-pull-request@1.0.0
