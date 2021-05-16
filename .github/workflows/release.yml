@@ -28,7 +28,7 @@ jobs:
       - run: echo $RELEASE_VERSION
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: samm$RELEASE_VERSION.tar.gz
+          artifacts: samm.tar.gz
           tag: ${{ env.RELEASE_VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge main into develop branch
