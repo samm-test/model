@@ -8,8 +8,10 @@ on:
       - closed
 
 jobs:
-  create-release:
+  release:
+    name: Publish new release
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true # only merged pull requests must trigger this job
     steps:
       - name: Extract version from branch name (for release branches)
         if: startsWith(github.event.pull_request.head.ref, 'release/')
@@ -26,6 +28,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: tar -cvzf samm.tar.gz images model texts
       - run: echo $RELEASE_VERSION
+      - uses: samm-test/toolbox-spreadsheet@main
       - uses: ncipollo/release-action@v1
         with:
           artifacts: samm.tar.gz
