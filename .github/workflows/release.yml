@@ -23,6 +23,7 @@ jobs:
           echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - run: tar -cvzf samm.tar.gz images model texts
+      - run: echo $RELEASE_VERSION
       - uses: ncipollo/release-action@v1
         with:
           artifacts: samm$RELEASE_VERSION.tar.gz
