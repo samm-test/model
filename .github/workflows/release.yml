@@ -31,7 +31,7 @@ jobs:
       - uses: samm-test/toolbox-spreadsheet@main
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: samm.tar.gz
+          artifacts: samm.tar.gz, /github/workspace/my_file.txt
           tag: ${{ env.RELEASE_VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge main into develop branch
