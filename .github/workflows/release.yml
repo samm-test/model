@@ -29,9 +29,12 @@ jobs:
       - run: tar -cvzf samm.tar.gz images model texts
       - run: echo $RELEASE_VERSION
       - uses: samm-test/toolbox-spreadsheet@main
+      - run: ls -alh
+      - run: pwd
+      - run: ls / -alh
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: samm.tar.gz, /github/workspace/my_file.txt
+          artifacts: samm.tar.gz, my_file.txt
           tag: ${{ env.RELEASE_VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge main into develop branch
