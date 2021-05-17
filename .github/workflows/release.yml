@@ -32,6 +32,7 @@ jobs:
       - run: ls -alh
       - run: pwd
       - run: ls / -alh
+      - run: ls $GITHUB_WORKSPACE
       - uses: ncipollo/release-action@v1
         with:
           artifacts: samm.tar.gz, my_file.txt
