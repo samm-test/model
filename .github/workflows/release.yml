@@ -27,7 +27,8 @@ jobs:
           echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - run: tar -cvzf samm.tar.gz images model texts
-      - uses: samm-test/toolbox-spreadsheet@main
+      - name: Generate Excel spreadsheet from the model
+        uses: samm-test/toolbox-spreadsheet@main
       - uses: ncipollo/release-action@v1
         with:
           artifacts: samm.tar.gz, my_file.txt
