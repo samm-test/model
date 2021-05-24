@@ -27,15 +27,11 @@ jobs:
           echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
       - uses: actions/checkout@v2
       - run: tar -cvzf samm.tar.gz images model texts
-      - run: echo $RELEASE_VERSION
-      - uses: samm-test/toolbox-spreadsheet@main
-      - run: ls -alh
-      - run: pwd
-      - run: ls / -alh
-      - run: ls $GITHUB_WORKSPACE
+      - name: Generate Excel spreadsheet from the model
+        uses: samm-test/toolbox-spreadsheet@main
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: samm.tar.gz, my_file.txt
+          artifacts: samm.tar.gz, SAMM_spreadsheet.xlsx
           tag: ${{ env.RELEASE_VERSION }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Merge main into develop branch
